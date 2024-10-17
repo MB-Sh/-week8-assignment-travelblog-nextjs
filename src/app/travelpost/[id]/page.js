@@ -7,15 +7,15 @@ export const metadata = {
 };
 
 export default async function TravelPostIdPage({ params }) {
-  const { id } = params;  // Dynamic ID from the URL
+    //Dynamic Id
+  const { id } = params;  
 
-  // Fetch the individual post by its ID
+  // Fetch post using its ID
   const travelPostId = await db.query(`SELECT * FROM travelpost WHERE id = $1`, [id]);
   const comments = await db.query(`SELECT * FROM comments WHERE post_id = $1`, [id]);
 
-  const post = travelPostId.rows[0];  // Fetch single post
-  const postComments = comments.rows;  // Fetch associated comments
-
+  const post = travelPostId.rows[0];  
+  const postComments = comments.rows;  
   if (!post) {
     return <h1>Post not found</h1>;
   }
@@ -34,7 +34,7 @@ export default async function TravelPostIdPage({ params }) {
         className="rounded-lg border-amber-400 border-4 flex flex-col items-center "
       />
 
-      {/* Comments Section */}
+      
       <h2>Comments</h2>
       {postComments.length > 0 ? (
         <ul>
@@ -48,7 +48,7 @@ export default async function TravelPostIdPage({ params }) {
         <p>No comments yet. Be the first to comment!</p>
       )}
 
-      {/* Comment Form */}
+    
       <h3>Add a Comment</h3>
       <form action={`/api/comments`} method="POST">
         <input type="hidden" name="post_id" value={id} />

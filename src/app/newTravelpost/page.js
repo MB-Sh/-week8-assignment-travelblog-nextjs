@@ -4,11 +4,11 @@ import { redirect } from "next/navigation";
 
 export default function AddTravelPost() {
 
-  // Handle form submission for adding a new travel post
+  // Handle submit
   async function handleSubmit(formValues) {
-    "use server"; // Server action for form submission
+    "use server"; 
 
-    // Get form data from input fields
+  
     const formData = {
       traveller_name: formValues.get("traveller_name"),
       title: formValues.get("title"),
@@ -16,14 +16,14 @@ export default function AddTravelPost() {
       image_url: formValues.get("image_url"),
     };
 
-    // Insert the new post into the travelpost table in the database
+    // Insert the new post 
     await db.query(
       `INSERT INTO travelpost (traveller_name, title, location, image_url)
       VALUES ($1, $2, $3, $4)`,
       [formData.traveller_name, formData.title, formData.location, formData.image_url]
     );
 
-    // Revalidate the data on the TravelPost page and redirect the user back to the posts page
+  
     revalidatePath("/travelpost");
     redirect("/travelpost");
   }

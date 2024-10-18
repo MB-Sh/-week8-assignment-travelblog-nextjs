@@ -1,5 +1,7 @@
+import AnimatedHeading from "@/components/AminatedHeading";
 import { db } from "@/utils/dbConnection";
 import Link from "next/link";
+
 
 export const metadata = {
   title: "Travel Posts",
@@ -8,42 +10,44 @@ export const metadata = {
 
 
 export default async function PostsPage({ searchParams }) {
-  // Fetch my posts from db
+  // Fetch posts from db
   let travelPosts = await db.query(`SELECT * FROM travelpost ORDER BY title ASC`);
-  
-  // if sort is set to 'desc' Reverse the order 
+
+  // If sort is set to 'desc', reverse the order
   if (searchParams.sort === "desc") {
-    travelPosts.rows.reverse();  
+    travelPosts.rows.reverse();
   }
 
-  const posts = travelPosts.rows; 
+  const posts = travelPosts.rows;
 
   return (
-    <div>
-      <h1>Travel Posts</h1>
+    <div className="bg-gray-100 min-h-screen py-12 px-8">
+      <AnimatedHeading text="Travel Posts" className="text-cyan-800 mb-10 text-center" />
 
-      <div className="my-4">
+      <div className="flex justify-center space-x-4 mb-8">
         <Link href="/travelpost?sort=asc">
-          <button className="mr-4 border border-gray-500 p-2">Sort Ascending</button>
+          <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">
+            Sort Ascending
+          </button>
         </Link>
         <Link href="/travelpost?sort=desc">
-          <button className="border border-gray-500 p-2">Sort Descending</button>
+          <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">
+            Sort Descending
+          </button>
         </Link>
       </div>
 
-     
-      <ul className="list-disc ml-5">
+      <ul className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
         {posts.length > 0 ? (
           posts.map((post) => (
-            <li key={post.id} className="mb-4">
-              <Link href={`/travelpost/${post.id}`}>
-                  {post.title} - {post.location}
-                
+            <li key={post.id} className="mb-4 border-b pb-4 last:border-b-0">
+              <Link href={`/travelpost/${post.id}`} className="text-xl font-semibold text-gray-800 hover:text-blue-600 transition duration-300">
+                {post.title} - <span className="text-gray-600">{post.location}</span>
               </Link>
             </li>
           ))
         ) : (
-          <p>No posts found.</p>
+          <p className="text-center text-gray-600">No posts found.</p>
         )}
       </ul>
     </div>

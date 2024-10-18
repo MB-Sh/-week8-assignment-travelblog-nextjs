@@ -2,7 +2,7 @@
 import Link from "next/link";
 import AboutPage from "@/app/about/page";
 import TravelPage from "@/app/travelpost/page";
-import NewTravelPost from "@/app/newTravelpost/page";
+import AddTravelPost from "@/app/addtravelpost/page";
 
 export default function Navbar(){
     return(

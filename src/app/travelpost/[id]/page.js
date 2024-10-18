@@ -16,13 +16,11 @@ export default async function TravelPostIdPage({ params }) {
 
   const post = travelPostId.rows[0];  
   const postComments = comments.rows;  
-  if (!post) {
-    return <h1>Post not found</h1>;
-  }
+  
 
   return (
     <>
-      <h1>Travel Post Details</h1>
+      <h1 className="">Travel Post Details</h1>
       <h2>{post.title}</h2>
       <p><strong>Location:</strong> {post.location}</p>
       <p><strong>Traveller:</strong> {post.traveller_name}</p>
@@ -34,7 +32,7 @@ export default async function TravelPostIdPage({ params }) {
         className="rounded-lg border-amber-400 border-4 flex flex-col items-center "
       />
 
-      
+{/*       
       <h2>Comments</h2>
       {postComments.length > 0 ? (
         <ul>
@@ -56,21 +54,21 @@ export default async function TravelPostIdPage({ params }) {
           name="comment"
           placeholder="Add your comment"
           required
-          className="border-2 border-gray-300 rounded-md p-2 my-2 w-full"
+          className="border-2 border-gray-300 rounded-md p-2 my-2 w-full text-stone-950"
         ></textarea>
         <input
           type="text"
           name="name"
           placeholder="Your name"
           required
-          className="border-2 border-gray-300 rounded-md p-2 my-2 w-full"
+          className="border-2 border-gray-300 rounded-md p-2 my-2 w-full text-stone-950"
         />
         <button type="submit" className="bg-blue-500 text-white p-2 rounded-md">
           Submit Comment
         </button>
       </form>
 
-      
+       */}
     </>
   );
 }

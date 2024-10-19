@@ -1,7 +1,7 @@
-"use client";  // To enable client-side interactivity
+"use client";  
 
 import Link from "next/link";
-import { motion } from "framer-motion";  // Import Framer Motion for animations
+import { motion } from "framer-motion";  
 
 export default function Navbar() {
   const links = [

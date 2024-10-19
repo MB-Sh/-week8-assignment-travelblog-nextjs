@@ -10,10 +10,10 @@ export const metadata = {
 
 
 export default async function PostsPage({ searchParams }) {
-  // Fetch posts from db
+  // Fetch my posts from db
   let travelPosts = await db.query(`SELECT * FROM travelpost ORDER BY title ASC`);
 
-  // If sort is set to 'desc', reverse the order
+ 
   if (searchParams.sort === "desc") {
     travelPosts.rows.reverse();
   }

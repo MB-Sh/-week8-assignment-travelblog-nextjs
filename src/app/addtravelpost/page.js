@@ -3,6 +3,11 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import AnimatedHeading from "@/components/AminatedHeading";
 
+export const metadata = {
+  title: "Add new travel post",
+  description: "Here you can add new travel and share your experience",
+};
+
 export default function AddTravelPost() {
 
   // Handle submit

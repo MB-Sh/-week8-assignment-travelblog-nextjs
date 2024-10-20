@@ -58,7 +58,7 @@ export default function Aboutpage() {
           adventurous trips, or simply some inspiration, you are in the right
           place. Dive into our posts and discover new ways to see the world.
 
-           Don't Forget to leave a comment !
+           Kindly leave a comment by telling us your thoughts !
         </motion.p>
 
         <motion.div
